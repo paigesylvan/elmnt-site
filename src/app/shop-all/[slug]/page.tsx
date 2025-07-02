@@ -2,7 +2,8 @@ import { SHOP_ITEMS } from "../../../../public/ItemList";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+export default async function ProductPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const item = SHOP_ITEMS.find((item) => item.slug === params.slug);
   if (!item) return notFound();
 

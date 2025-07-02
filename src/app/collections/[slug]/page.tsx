@@ -111,9 +111,9 @@ const COLLECTIONS = {
   },
 };
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
@@ -122,7 +122,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CollectionPage({ params }: PageProps) {
+export default async function CollectionPage(props: PageProps) {
+  const params = await props.params;
   const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
   if (!collection) return notFound();
 
