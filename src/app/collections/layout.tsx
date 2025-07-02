@@ -4,7 +4,7 @@ import CollectionNav from "../../../components/collectionnav";
 import CollectionsBanner from "../../../components/collectionbanner";
 
 
-export default async function BundleLayout({ children }: { children: ReactNode }) {
+export default function BundleLayout({ children }: { children: ReactNode }) {
   return (
     <main className="min-h-screen">
       <div className="bg-black py-5">
