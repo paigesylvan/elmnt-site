@@ -11,7 +11,7 @@ export default function Hero() {
 
   <div className="absolute inset-0 flex justify-center z-10  text-black ">
     <div className=" ">
-      <h1 className=" text-md  mt-[4vh] lg:mt-[10vh] lg:text-4xl lg:mr-[40vw] ">
+      <h1 className=" text-md mt-[4vh] lg:mt-[10vh] lg:text-4xl lg:mr-[40vw] ">
         Gear for every element<br /> of your journey
       </h1>
       

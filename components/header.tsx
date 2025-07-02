@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="lg:py-6 lg:px-6 flex justify-between items-center">
+      <div className="py-6 px-6 flex justify-between items-center">
         {/* Logo: always left */}
         <Link href="/" className="text-4xl font-bold text-black">
           ELMNT
@@ -77,7 +77,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden px-6 pb-6 flex flex-col gap-4 text-xl bg-white border-t border-gray-200">
+        <div className="md:hidden pt-6 px-6 pb-6 flex flex-col gap-4 text-xl bg-white border-t border-gray-200">
           {navItems.map(({ label, href }) => (
             <Link
               key={href}

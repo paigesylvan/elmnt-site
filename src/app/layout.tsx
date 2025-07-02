@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         <CartProvider>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main >{children}</main>
         <Footer />
         </CartProvider>
       </body>

@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 
 const COLLECTIONS = {
   fire: {
-    title: "Fire Collection",
-    image: "/images/fire.jpeg",
+    title: "FIRE COLLECTION",
+    image: "/images/fire/fire.jpeg",
     images: [
       "/images/fire/roastingstx.png",
       "/images/fire/firegrate.png",
@@ -15,8 +15,9 @@ const COLLECTIONS = {
       "/images/fire/campgame.png",
       "/images/fire/colorflames.png",
     ],
+    ogprice: "$130",
     description:
-      "Ground yourself with warmth, comfort, and gear made for steady moments in nature.",
+      "Gather around. This fire kit sparks connection, warmth, and the kind of night you’ll talk about long after it ends.",
     price: "$69",
     items: [
       "Compact Roasting Sticks (Set of 4)",
@@ -26,11 +27,12 @@ const COLLECTIONS = {
       "Campfire Game",
       "Color-Changing Fire Crystals",
     ],
+    textcolor: "text-orange-700",
     color: "bg-white",
   },
   earth: {
-    title: "Earth Collection",
-    image: "/images/earth.jpg",
+    title: "EARTH COLLECTION",
+    image: "/images/earth/earth.jpg",
     images: [
       "/images/earth/badminton.png",
       "/images/earth/bags.png",
@@ -39,51 +41,73 @@ const COLLECTIONS = {
       "/images/earth/rings.png",
       "/images/earth/washer.png",
     ],
+    ogprice: "$227",
     description:
-      "Feel rooted. Bring comfort to any terrain with grounding tools designed for steadiness.",
-    price: "$62",
+      "Bring people together with easy games, gentle competition, and wide-open skies. Perfect for group camping & day trips.",
+    price: "$169",
     items: [
-      "Wool Blanket",
-      "Tarp",
-      "Foldable Chairs",
-      "Pocket Picnic Blanket",
-      "Biodegradable Ground Mat",
+      "Badminton Set",
+      "Cornhole Set",
+      "Bocce Ball Set",
+      "Giant Jenga",
+      "Ring Swing Game",
+      "Washer set",
     ],
-    color: "bg-white",
+    textcolor: "text-green-800",
+    color: "bg-green",
   },
   water: {
-    title: "Water Collection",
-    image: "/images/water.jpg",
+    title: "WATER COLLECTION",
+    image: "/images/water/water.jpg",
     images: [
-      "/images/fire/item1.jpeg",
-      "/images/fire/item2.jpeg",
-      "/images/fire/item3.jpeg",
-      "/images/fire/item4.jpeg",
-      "/images/fire/item5.jpeg",
-      "/images/fire/item6.jpeg",
+      "/images/water/beachchair.png",
+      "/images/water/cooler.png",
+      "/images/water/umbrella.png",
+      "/images/water/towel.png",
+      "/images/water/tube.png",
+      "/images/water/floaty.png",
     ],
+    ogprice: "$269",
     description:
-      "Float with ease. Hydration, cleaning, and light—the essentials that flow with you.",
-    price: "$58",
-    items: ["Quick Dry Towel", "Water Bottle", "Lantern", "Meal Kit"],
+      "Drift into calm, everything you need for your sunniest days on the water. Includes tips for lakeside lounging and paddle safety",
+    price: "$209",
+    items: [
+      "Foldable Beach Chair",
+      "Soft Cooler", 
+      "Umbrella Chair Attachment",
+      "Set of 4 Towels",
+      "Inflatable Tube",
+      "Inflatable Drink Holder + Cooler",
+
+    ],
+    textcolor: "text-teal-600",
     color: "bg-white",
   },
   air: {
-    title: "Air Collection",
-    image: "/images/air.jpeg",
+    title: "AIR COLLECTION",
+    image: "/images/air/air.jpeg",
     images: [
-      "/images/fire/item1.jpeg",
-      "/images/fire/item2.jpeg",
-      "/images/fire/item3.jpeg",
-      "/images/fire/item4.jpeg",
-      "/images/fire/item5.jpeg",
-      "/images/fire/item6.jpeg",
+      "/images/air/flyaway.png",
+      "/images/air/hammock.png",
+      "/images/air/lounge.png",
+      "/images/air/airpump.png",
+      "/images/air/fan.png",
+      "/images/air/telescope.png",
     ],
+    ogprice: "$249",
     description:
-      "Move freely and breathe deep. Lightweight gear that lifts your spirits and your load.",
-    price: "$64",
-    items: ["Sleeping Mat", "Trail Backpack", "Compact Chair", "Compass"],
-    color: "bg-white",
+      "Float, rest, observe. The Air Collection is all about breathing room and skyward perspectives. Best for solo relaxing and stargazing.",
+    price: "$189",
+    items: [
+      "Tent Canopy Additon", 
+      "Hammock", 
+      "Inflatable Lounge Chair", 
+      "Battery Air Pump",
+      "Solar Fan",
+      "Portable Telescope"
+    ],
+    textcolor: "text-teal-900",
+    color: "bg-blue",
   },
 };
 
@@ -92,9 +116,9 @@ export default function CollectionPage({ params }: { params: { slug: string } })
   if (!collection) return notFound();
 
   return (
-    <section className={`${collection.color}`}>
+    <section className=  "bg-white mb-48">
       {/* Hero image */}
-      <div className="relative w-full h-[650px] mb-12 ">
+      <div className="relative mb-12 h-[170px] w-full lg:h-[650px] lg:mb-24 ">
       <Image
        src={collection.image}
         alt={`${collection.title} Hero`}
@@ -105,45 +129,52 @@ export default function CollectionPage({ params }: { params: { slug: string } })
       </div>
 
 
-<div className='flex flex-row'>
+<div className='flex flex-col lg:flex-row items-center '>
+
       {/* Product image grid */}
-      <div className="w-1/2 grid grid-cols-2 gap-4 max-w-6xl mx-auto mb-12 ">
+      <div className="lg:w-1/2 flex justify-center">
+        <div className="grid grid-cols-2 gap-12 ">
         {collection.images.map((src, idx) => (
-          <div key={idx} className=" overflow-hidden">
+          <div key={idx} className="overflow-hidden p-3 lg:px-12">
             <Image
               src={src}
               alt={`${collection.title} product ${idx + 1}`}
               width={200}
               height={200}
-              className="object-contain "
+              className=" object-contain object-center max-h-58"
             />
           </div>
         ))}
+        
       </div>
+</div>
+
 
       {/* Text content */}
-      <div className="w-1/2 text-left space-y-6  text-zinc-800">
-        <h1 className="text-4xl font-bold font-poppins text-elmnt-forest">
+      <div className="text-left mt-8 lg:mt-0 text-zinc-800 bg-transparent shadow-xl p-24 lg:ml-30">
+        <h1 className="pb-14 tracking-wider text-5xl lg:text-6xl">
           {collection.title}
         </h1>
-        <p className="text-base md:text-lg">{collection.description}</p>
+       
+        <div className="flex flex-row gap-12 mb-8 ">
+          <div className=" text-2xl lg:text-3xl font-bold">{collection.price}</div>
 
+          <button className="bg-black text-white hover:border-1 hover:border-black hover:bg-white hover:text-black font-medium lg:py-2 px-6 transition">
+          Add To Cart
+          </button>
+        </div>
+        
+        <p className="max-w-lg text-lg lg:text-2xl ">{collection.description}</p>
+        <p className= {`text-gray-500 text-xl my-6 ${collection.textcolor} `}>{collection.ogprice} Original Value</p>
         <div>
-          <h2 className="text-lg font-semibold mb-2">What’s inside:</h2>
-          <ul className="list-disc list-inside space-y-1 text-sm md:text-base text-left ">
+          <h2 className="text-3xl font-semibold mt-12 mb-2">What’s inside:</h2>
+          <ul className="list-disc list-inside space-y-1 text-md lg:text-xl text-left ">
             {collection.items.map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}
           </ul>
         </div>
-
-        <div className="text-2xl font-bold">{collection.price}</div>
-
-        <button className="bg-elmnt-forest hover:bg-black text-white px-6 py-3 rounded-md font-medium transition">
-          Add to Cart
-        </button>
       </div>
-
       </div>
     </section>
   );
