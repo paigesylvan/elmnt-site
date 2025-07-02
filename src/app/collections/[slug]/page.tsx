@@ -116,6 +116,12 @@ type PageProps = {
   };
 };
 
+export async function generateStaticParams() {
+  return Object.keys(COLLECTIONS).map((slug) => ({
+    slug,
+  }));
+}
+
 export default async function CollectionPage({ params }: PageProps) {
   const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
   if (!collection) return notFound();
