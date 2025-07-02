@@ -110,8 +110,13 @@ const COLLECTIONS = {
     color: "bg-blue",
   },
 };
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-export default function CollectionPage({ params }: { params: { slug: string } }) {
+export default async function CollectionPage({ params }: PageProps) {
   const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
   if (!collection) return notFound();
 
