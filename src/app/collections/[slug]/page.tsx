@@ -56,10 +56,13 @@ type PageProps = {
   };
 };
 
-/*export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<
+  { slug: string }[]
+> {
   return Object.keys(COLLECTIONS).map((slug) => ({ slug }));
 }
-*/
+
+
 
 export default function CollectionPage({ params }: PageProps) {
   const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
