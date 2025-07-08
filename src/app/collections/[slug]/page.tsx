@@ -30,6 +30,7 @@ const COLLECTIONS = {
     textcolor: "text-orange-700",
     color: "bg-white",
   },
+  // ... other collections as before
   earth: {
     title: "EARTH COLLECTION",
     image: "/images/earth/earth.jpg",
@@ -109,21 +110,15 @@ const COLLECTIONS = {
     color: "bg-blue",
   },
 };
+export default async function CollectionPage(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<React.JSX.Element> {
+  const { slug } = await props.params;
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  return Object.keys(COLLECTIONS).map((slug) => ({ slug }));
-}
-
-export default function CollectionPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
-  if (!collection) return notFound();
+  const collection = COLLECTIONS[slug as keyof typeof COLLECTIONS];
+  if (!collection) notFound();
 
   const item = SHOP_ITEMS.find((i) => i.name === collection.title);
-
   return (
     <section className="bg-white mb-48">
       <div className="relative mb-12 h-[170px] w-full lg:h-[650px] lg:mb-24">

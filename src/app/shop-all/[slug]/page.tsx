@@ -2,8 +2,12 @@ import { SHOP_ITEMS } from "../../../../data/ItemList";
 import AddToCartButton from "../../../../components/addtocartbutton";
 import Image from "next/image";
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const item = SHOP_ITEMS.find((i) => i.slug === params.slug);
+export default async function ProductPage(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<React.JSX.Element> {
+  const { slug } = await props.params;
+
+  const item = SHOP_ITEMS.find((i) => i.slug === slug);
 
   if (!item) {
     return <div>Product not found.</div>;
