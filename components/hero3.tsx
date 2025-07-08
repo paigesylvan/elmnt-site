@@ -33,7 +33,7 @@ export default function SectionFour() {
 
   return (
     <section className="bg-[#f9f8f2] py-12 lg:py-56 ">
-      <div className="flex flex-col gap-12 lg:gap-40 relative">
+      <div className="flex flex-col  relative">
         {bundles.map(({ title, description, button, href, image }, i) => (
           <motion.div
             key={title}
@@ -41,7 +41,7 @@ export default function SectionFour() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
             viewport={{ once: true, amount: 0.3 }}
-            className={` flex flex-row items-center gap-6 lg:-my-36 ${
+            className={` flex flex-row items-center lg:-my-36 ${
               i === 1 ? "flex-row-reverse" : ""
             }`}
             
@@ -59,9 +59,12 @@ export default function SectionFour() {
             </div>
 
             {/* Text Card */}
-            <div className={`bg-transparent p-3 md:p-5 lg:pt-12 w-60 h-56 md:w-96 md:h-80 lg:w-[600px] lg:h-[450px] lg:p-7 rounded-sm shadow-2xl border border-[#e2e1dc]   ${i === 1 ? "text-right" : "text-left"} `}>
-              <h1 className={` md:text-3xl lg:text-5xl font-bold mb-2 lg:mb-8 text-elmnt-forest ${i === 2 ? "md:mt-6" : "mt-0"}`} >{title}</h1>
-              <h2 className=" text-xs md:text-lg lg:text-2xl text-gray-800 leading-relaxed">{description}</h2>
+            <div className={`bg-transparent w-48 h-50 rounded-sm shadow-2xl border border-[#e2e1dc] 
+            md:p-5 md:w-96 md:h-80 
+            lg:pt-12 lg:w-[600px] lg:h-[450px] lg:p-7   ${i === 1 ? "text-right" : "text-left"} `}>
+
+              <h1 className={` md:text-3xl lg:text-5xl lg:mb-8 font-bold mb-2 text-elmnt-forest ${i === 2 ? "md:mt-6" : "mt-0"}`} >{title}</h1>
+              <h2 className=" text-[5px]  md:text-lg lg:text-2xl text-gray-800 lg:leading-relaxed">{description}</h2>
               <Link
                 href={href}
                 className="inline-block mt-6 lg:mt-12 text-[8px] md:text-xl lg:text-3xl tracking-wide text-white bg-black border border-black px-5 py-2 hover:bg-transparent hover:text-black hover:shadow-2xl transition"
