@@ -7,64 +7,118 @@ const COLLECTIONS = {
   fire: {
     title: "FIRE COLLECTION",
     image: "/images/fire/fire.jpeg",
-    images: ["/images/fire/roastingstx.png", "/images/fire/firegrate.png", "/images/fire/candle.png", "/images/fire/stringlights.png", "/images/fire/campgame.png", "/images/fire/colorflames.png"],
+    images: [
+      "/images/fire/roastingstx.png",
+      "/images/fire/firegrate.png",
+      "/images/fire/candle.png",
+      "/images/fire/stringlights.png",
+      "/images/fire/campgame.png",
+      "/images/fire/colorflames.png",
+    ],
     ogprice: "$130",
-    description: "Gather around. This fire kit sparks connection, warmth, and the kind of night you’ll talk about long after it ends.",
+    description:
+      "Gather around. This fire kit sparks connection, warmth, and the kind of night you’ll talk about long after it ends.",
     price: "$69",
-    items: [ "Compact Roasting Sticks (Set of 4)", "Campfire Grate", "Citronella Candle", "20ft Solar String Lights", "Campfire Game", "Color-Changing Fire Crystals" ],
+    items: [
+      "Compact Roasting Sticks (Set of 4)",
+      "Campfire Grate",
+      "Citronella Candle",
+      "20ft Solar String Lights",
+      "Campfire Game",
+      "Color-Changing Fire Crystals",
+    ],
     textcolor: "text-orange-700",
     color: "bg-white",
   },
   earth: {
     title: "EARTH COLLECTION",
     image: "/images/earth/earth.jpg",
-    images: ["/images/earth/badminton.png", "/images/earth/bags.png", "/images/earth/bocce.png", "/images/earth/jenga.png", "/images/earth/rings.png", "/images/earth/washer.png"],
+    images: [
+      "/images/earth/badminton.png",
+      "/images/earth/bags.png",
+      "/images/earth/bocce.png",
+      "/images/earth/jenga.png",
+      "/images/earth/rings.png",
+      "/images/earth/washer.png",
+    ],
     ogprice: "$227",
-    description: "Bring people together with easy games, gentle competition, and wide-open skies. Perfect for group camping & day trips.",
+    description:
+      "Bring people together with easy games, gentle competition, and wide-open skies. Perfect for group camping & day trips.",
     price: "$169",
-    items: [ "Badminton Set", "Cornhole Set", "Bocce Ball Set", "Giant Jenga", "Ring Swing Game", "Washer set" ],
+    items: [
+      "Badminton Set",
+      "Cornhole Set",
+      "Bocce Ball Set",
+      "Giant Jenga",
+      "Ring Swing Game",
+      "Washer set",
+    ],
     textcolor: "text-green-800",
     color: "bg-green",
   },
   water: {
     title: "WATER COLLECTION",
     image: "/images/water/water.jpg",
-    images: ["/images/water/beachchair.png", "/images/water/cooler.png", "/images/water/umbrella.png", "/images/water/towel.png", "/images/water/tube.png", "/images/water/floaty.png"],
+    images: [
+      "/images/water/beachchair.png",
+      "/images/water/cooler.png",
+      "/images/water/umbrella.png",
+      "/images/water/towel.png",
+      "/images/water/tube.png",
+      "/images/water/floaty.png",
+    ],
     ogprice: "$269",
-    description: "Drift into calm, everything you need for your sunniest days on the water. Includes tips for lakeside lounging and paddle safety",
+    description:
+      "Drift into calm, everything you need for your sunniest days on the water. Includes tips for lakeside lounging and paddle safety",
     price: "$209",
-    items: [ "Foldable Beach Chair", "Soft Cooler", "Umbrella Chair Attachment", "Set of 4 Towels", "Inflatable Tube", "Inflatable Drink Holder + Cooler" ],
+    items: [
+      "Foldable Beach Chair",
+      "Soft Cooler",
+      "Umbrella Chair Attachment",
+      "Set of 4 Towels",
+      "Inflatable Tube",
+      "Inflatable Drink Holder + Cooler",
+    ],
     textcolor: "text-teal-600",
     color: "bg-white",
   },
   air: {
     title: "AIR COLLECTION",
     image: "/images/air/air.jpeg",
-    images: ["/images/air/flyaway.png", "/images/air/hammock.png", "/images/air/lounge.png", "/images/air/airpump.png", "/images/air/fan.png", "/images/air/telescope.png"],
+    images: [
+      "/images/air/flyaway.png",
+      "/images/air/hammock.png",
+      "/images/air/lounge.png",
+      "/images/air/airpump.png",
+      "/images/air/fan.png",
+      "/images/air/telescope.png",
+    ],
     ogprice: "$249",
-    description: "Float, rest, observe. The Air Collection is all about breathing room and skyward perspectives. Best for solo relaxing and stargazing.",
+    description:
+      "Float, rest, observe. The Air Collection is all about breathing room and skyward perspectives. Best for solo relaxing and stargazing.",
     price: "$189",
-    items: [ "Tent Canopy Addition", "Hammock", "Inflatable Lounge Chair", "Battery Air Pump", "Solar Fan", "Portable Telescope" ],
+    items: [
+      "Tent Canopy Addition",
+      "Hammock",
+      "Inflatable Lounge Chair",
+      "Battery Air Pump",
+      "Solar Fan",
+      "Portable Telescope",
+    ],
     textcolor: "text-teal-900",
     color: "bg-blue",
   },
 };
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateStaticParams(): Promise<
-  { slug: string }[]
-> {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return Object.keys(COLLECTIONS).map((slug) => ({ slug }));
 }
 
-
-
-export default function CollectionPage({ params }: PageProps) {
+export default function CollectionPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const collection = COLLECTIONS[params.slug as keyof typeof COLLECTIONS];
   if (!collection) return notFound();
 
