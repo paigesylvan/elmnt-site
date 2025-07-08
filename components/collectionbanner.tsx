@@ -7,7 +7,7 @@ export default function CollectionsBanner() {
         Interested in a single item? Find individual items:
       </p>
       <Link
-        href="/shop"
+        href="/shop-all"
         className="inline-block border border-black px-6 py-2 font-semibold tracking-wide uppercase hover:bg-black hover:text-white transition"
       >
         Shop All

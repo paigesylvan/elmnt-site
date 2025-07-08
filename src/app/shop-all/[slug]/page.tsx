@@ -1,11 +1,13 @@
-import { SHOP_ITEMS } from "../../../../public/ItemList";
-import { notFound } from "next/navigation";
+import { SHOP_ITEMS } from "../../../../data/ItemList";
+import AddToCartButton from "../../../../components/addtocartbutton";
 import Image from "next/image";
 
-export default async function ProductPage(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
-  const item = SHOP_ITEMS.find((item) => item.slug === params.slug);
-  if (!item) return notFound();
+export default function ProductPage({ params }: { params: { slug: string } }) {
+  const item = SHOP_ITEMS.find((i) => i.slug === params.slug);
+
+  if (!item) {
+    return <div>Product not found.</div>;
+  }
 
   return (
 <section className="py-12 mx-auto space-y-6 lg:shadow-2xl overflow-hidden w-full lg:w-6xl lg:mt-36  lg:mb-[44vh]">
@@ -24,9 +26,9 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
       <h1 className="text-3xl font-bold">{item.name}</h1>
       <p className="text-zinc-700 p">{item.description}</p>
       <p className="text-2xl font-semibold">{item.price}</p>
-      <button className="bg-black text-white hover:bg-white hover:text-black hover:border-1 px-6 py-3 font-medium transition">
-        Add to Bag
-      </button>
+
+      <AddToCartButton item={{ id: item.slug, ...item, quantity: 1 }} />
+
     </div>
   </div>
 </section>

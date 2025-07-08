@@ -59,7 +59,7 @@ export default function SectionFour() {
             </div>
 
             {/* Text Card */}
-            <div className={`bg-transparent p-3 md:p-5 lg:pt-12 w-60 h-56 md:w-96 md:h-80 lg:w-[600px] lg:h-[450px] rounded-sm shadow-2xl border border-[#e2e1dc]   ${i === 1 ? "text-right" : "text-left"} `}>
+            <div className={`bg-transparent p-3 md:p-5 lg:pt-12 w-60 h-56 md:w-96 md:h-80 lg:w-[600px] lg:h-[450px] lg:p-7 rounded-sm shadow-2xl border border-[#e2e1dc]   ${i === 1 ? "text-right" : "text-left"} `}>
               <h1 className={` md:text-3xl lg:text-5xl font-bold mb-2 lg:mb-8 text-elmnt-forest ${i === 2 ? "md:mt-6" : "mt-0"}`} >{title}</h1>
               <h2 className=" text-xs md:text-lg lg:text-2xl text-gray-800 leading-relaxed">{description}</h2>
               <Link

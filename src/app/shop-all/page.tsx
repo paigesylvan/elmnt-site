@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SHOP_ITEMS } from "../../../public/ItemList";
+import { SHOP_ITEMS } from "../../../data/ItemList";
 import Image from "next/image";
 import Link from "next/link";
 
